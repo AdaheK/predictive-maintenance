@@ -1,0 +1,15 @@
+# Environnement
+venv/
+.venv/
+__pycache__/
+
+# Data et modèles
+data/
+models/
+
+# Fichiers lourds
+*.joblib
+*.pkl
+
+# Jupyter
+.ipynb_checkpoints/

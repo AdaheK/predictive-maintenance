@@ -8,7 +8,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 def get_feature_lists() -> Tuple[List[str], List[str]]:
     """
-    Liste des features numériques et catégorielles.
+    Retourne les listes de features numériques et catégorielles.
     """
     numeric_features = [
         "vibration_rms",
@@ -36,9 +36,9 @@ def get_feature_lists() -> Tuple[List[str], List[str]]:
 
 def build_preprocessing_pipeline() -> ColumnTransformer:
     """
-    Pipeline sklearn complet :
+    Construit le pipeline sklearn :
     - numériques : imputation médiane + standardisation
-    - catégorielles : imputation mode + one hot encoding
+    - catégorielles : imputation mode + one-hot encoding
     """
     numeric_features, categorical_features = get_feature_lists()
 
@@ -52,7 +52,7 @@ def build_preprocessing_pipeline() -> ColumnTransformer:
     categorical_transformer = Pipeline(
         steps=[
             ("imputer", SimpleImputer(strategy="most_frequent")),
-            ("onehot", OneHotEncoder(handle_unknown="ignore")),
+            ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=False)),
         ]
     )
 
